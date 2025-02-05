@@ -10,11 +10,12 @@ import { User } from './user.model';
 })
 export class UserComponent {
   user = input.required<User>();
-  selected = output<string>();
+  selected = input.required<boolean>();
+  selectedUser = output<string>();
 
   imagePath = computed(() => 'assets/users/' + this.user().avatar);
 
   onSelectUser() {
-    this.selected.emit(this.user().id);
+    this.selectedUser.emit(this.user().id);
   }
 }
