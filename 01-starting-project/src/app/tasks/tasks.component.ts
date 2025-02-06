@@ -1,7 +1,9 @@
 import { Component, Input } from '@angular/core';
-import { User } from '../user/user.model';
+import { type User } from '../user/user.model';
 import { TaskComponent } from './task/task.component';
 import { NewTaskComponent } from './new-task/new-task.component';
+import { type NewTaskData } from './new-task/new-task.model';
+import { DUMMY_TASKS } from './dummy-tasks';
 
 @Component({
   selector: 'app-tasks',
@@ -15,31 +17,7 @@ export class TasksComponent {
 
   isAddingTask = false;
 
-  tasks = [
-    {
-      id: 't1',
-      userId: 'u1',
-      title: 'Master Angular',
-      summary:
-        'Learn all the basic and advanced features of Angular & how to apply them.',
-      dueDate: '2025-12-31',
-    },
-    {
-      id: 't2',
-      userId: 'u3',
-      title: 'Build first prototype',
-      summary: 'Build a first prototype of the online shop website',
-      dueDate: '2024-05-31',
-    },
-    {
-      id: 't3',
-      userId: 'u3',
-      title: 'Prepare issue template',
-      summary:
-        'Prepare and describe an issue template which will help with project management',
-      dueDate: '2024-06-15',
-    },
-  ];
+  tasks = DUMMY_TASKS;
 
   get userTasks() {
     return this.tasks.filter((task) => task.userId == this.user.id);
@@ -54,6 +32,18 @@ export class TasksComponent {
   }
 
   onCloseAddTask() {
+    this.isAddingTask = false;
+  }
+
+  onAddTask(taskData: NewTaskData) {
+    this.tasks.push({
+      id: new Date().getTime().toString(),
+      userId: this.user.id,
+      title: taskData.title,
+      summary: taskData.summary,
+      dueDate: taskData.date,
+    });
+
     this.isAddingTask = false;
   }
 }
