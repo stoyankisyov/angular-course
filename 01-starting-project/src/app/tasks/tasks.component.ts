@@ -1,7 +1,8 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, computed, Input } from '@angular/core';
 import { User } from '../user/user.model';
 import { TaskComponent } from './task/task.component';
 import { DUMMY_TASKS } from './dummy-tasks';
+import { Task } from './task/task.model';
 
 @Component({
   selector: 'app-tasks',
@@ -11,7 +12,8 @@ import { DUMMY_TASKS } from './dummy-tasks';
   styleUrl: './tasks.component.css',
 })
 export class TasksComponent {
-  user = input.required<User>();
+  @Input({ required: true }) user!: User;
+
   tasks = [
     {
       id: 't1',
@@ -38,12 +40,11 @@ export class TasksComponent {
     },
   ];
 
-  userTasks = computed(() =>
-    this.tasks.filter((task) => task.userId == this.user().id)
-  );
+  get userTasks() {
+    return this.tasks.filter((task) => task.userId == this.user.id);
+  }
 
   onCompleteTask(id: string) {
-    console.log('Task completed:', id);
-    this.tasks = this.userTasks().filter((task) => task.id !== id);
+    this.tasks = this.userTasks.filter((task) => task.id !== id);
   }
 }
