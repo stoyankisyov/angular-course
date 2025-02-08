@@ -25,7 +25,7 @@ export class NewTaskComponent {
   enteredSummary = signal('');
   enteredDate = signal('');
 
-  tasksService = inject(TasksService);
+  private tasksService = inject(TasksService);
 
   onClose() {
     return this.close.emit();
