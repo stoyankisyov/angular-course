@@ -1,5 +1,6 @@
 import { Component, computed, input, output } from '@angular/core';
-import { User } from './user.model';
+
+import { type User } from './user.model';
 import { CardComponent } from '../shared/card/card.component';
 
 @Component({

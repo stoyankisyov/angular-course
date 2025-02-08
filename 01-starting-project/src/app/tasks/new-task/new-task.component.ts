@@ -7,7 +7,7 @@ import {
   signal,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { type NewTaskData } from './new-task.model';
+
 import { TasksService } from '../tasks.service';
 
 @Component({
