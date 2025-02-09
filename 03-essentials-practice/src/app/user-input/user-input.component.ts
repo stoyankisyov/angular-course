@@ -1,13 +1,6 @@
-import {
-  Component,
-  EventEmitter,
-  inject,
-  output,
-  Output,
-  signal,
-} from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import type { InvestmentInput } from '../investment-input.model.ts.js';
+
 import { InvestmentService } from '../investment.service.js';
 
 @Component({

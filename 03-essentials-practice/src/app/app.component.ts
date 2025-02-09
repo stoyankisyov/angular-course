@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
+
+import type { InvestmentResults } from './investment-results.model';
+
 import { HeaderComponent } from './header/header.component';
 import { UserInputComponent } from './user-input/user-input.component';
-import type { InvestmentInput } from './investment-input.model.ts';
 import { InvestmentResultsComponent } from './investment-results/investment-results.component';
-import type { InvestmentResults } from './investment-results.model';
 
 @Component({
   selector: 'app-root',
