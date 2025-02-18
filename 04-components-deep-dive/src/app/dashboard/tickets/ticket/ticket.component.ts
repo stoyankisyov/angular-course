@@ -1,4 +1,5 @@
 import { Component, input, output, signal } from '@angular/core';
+
 import type { Ticket } from './ticket.model';
 
 @Component({
@@ -14,7 +15,6 @@ export class TicketComponent {
   close = output();
 
   onToggleDetails() {
-    // this.detailsVisible.set(!this.detailsVisible());
     this.detailsVisible.update((wasVisible) => !wasVisible);
   }
 

@@ -1,14 +1,8 @@
-import {
-  Component,
-  ElementRef,
-  output,
-  signal,
-  viewChild,
-} from '@angular/core';
+import { Component, output, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
 import { ButtonComponent } from '../../../shared/button/button.component';
 import { ControlComponent } from '../../../shared/control/control.component';
-import { FormsModule } from '@angular/forms';
-import { single } from 'rxjs';
 
 @Component({
   selector: 'app-new-ticket',
@@ -18,7 +12,6 @@ import { single } from 'rxjs';
   styleUrl: './new-ticket.component.css',
 })
 export class NewTicketComponent {
-  private form = viewChild.required<ElementRef<HTMLFormElement>>('form');
   add = output<{ title: string; text: string }>();
 
   enteredTitle = signal('');

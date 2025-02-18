@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { NewTicketComponent } from './new-ticket/new-ticket.component';
+
 import type { Ticket } from './ticket/ticket.model';
+
+import { NewTicketComponent } from './new-ticket/new-ticket.component';
 import { TicketComponent } from './ticket/ticket.component';
 
 @Component({

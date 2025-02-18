@@ -3,7 +3,6 @@ import {
   DestroyRef,
   effect,
   inject,
-  OnDestroy,
   OnInit,
   signal,
 } from '@angular/core';
@@ -16,8 +15,9 @@ import {
   styleUrl: './server-status.component.css',
 })
 export class ServerStatusComponent implements OnInit {
-  currentStatus = signal<'online' | 'offline' | 'unknown'>('online');
   private destroyRef = inject(DestroyRef);
+
+  currentStatus = signal<'online' | 'offline' | 'unknown'>('online');
 
   constructor() {
     effect(() => {
