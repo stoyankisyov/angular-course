@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { AuthComponent } from './auth/auth.component';
 import { LearningResourcesComponent } from './learning-resources/learning-resources.component';
+
 import { AuthDirective } from './auth/auth.directive';
 
 @Component({
