@@ -43,7 +43,7 @@ export class AvailablePlacesComponent implements OnInit {
 
   onSelectPlace(place: Place) {
     const subscription = this.PlacesService.addPlaceToUserPlaces(
-      place.id
+      place
     ).subscribe({ next: (resDate) => console.log(resDate) });
 
     this.destroyRef.onDestroy(() => {
