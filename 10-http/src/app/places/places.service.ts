@@ -1,19 +1,19 @@
 import { inject, Injectable, signal } from '@angular/core';
-
-import { Place } from './place.model';
 import { HttpClient } from '@angular/common/http';
-import { map, catchError, throwError, pipe, tap } from 'rxjs';
-import { UserPlacesComponent } from './user-places/user-places.component';
+
+import { map, catchError, throwError, tap } from 'rxjs';
+
+import type { Place } from './place.model';
 import { ErrorService } from '../shared/error.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PlacesService {
-  private userPlaces = signal<Place[]>([]);
-
   private httpClient = inject(HttpClient);
   private errorService = inject(ErrorService);
+
+  private userPlaces = signal<Place[]>([]);
 
   loadedUserPlaces = this.userPlaces.asReadonly();
 

@@ -1,6 +1,6 @@
 import { Component, input, output } from '@angular/core';
 
-import { Place } from './place.model';
+import type { Place } from './place.model';
 
 @Component({
   selector: 'app-places',
