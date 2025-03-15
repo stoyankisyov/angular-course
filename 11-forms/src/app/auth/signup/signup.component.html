@@ -12,7 +12,7 @@
     />
   </div>
 
-  <div class="control-row" [formGroup]="form.controls.passwords">
+  <div class="control-row" formGroupName="passwords">
     <div class="control">
       <label for="password">Password</label>
       <input
@@ -59,7 +59,7 @@
       </div>
     </div>
 
-    <fieldset [formGroup]="form.controls.address">
+    <fieldset formGroupName="address">
       <legend>Your Address</legend>
 
       <div class="control-row">
@@ -179,4 +179,8 @@
     </button>
     <button type="submit" class="button">Sign up</button>
   </p>
+
+  @if(form.invalid && form.touched && form.dirty) {
+  <p class="control-error">Invalid form - please check your input data.</p>
+  }
 </form>
