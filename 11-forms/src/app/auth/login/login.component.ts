@@ -22,5 +22,7 @@ export class LoginComponent {
     console.log(
       `Entered Email: ${enteredEmail}, Entered Password: ${enteredPassword}`
     );
+
+    formData.form.reset();
   }
 }
