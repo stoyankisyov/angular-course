@@ -1,4 +1,3 @@
-import { formatDate } from '@angular/common';
 import {
   afterNextRender,
   Component,
@@ -7,6 +6,7 @@ import {
   viewChild,
 } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
+
 import { debounceTime } from 'rxjs';
 
 @Component({
@@ -17,8 +17,8 @@ import { debounceTime } from 'rxjs';
   styleUrl: './login-template-driven.component.css',
 })
 export class LoginTemplateDrivenComponent {
-  private form = viewChild.required<NgForm>('form');
   private destroyRef = inject(DestroyRef);
+  private form = viewChild.required<NgForm>('form');
 
   constructor() {
     afterNextRender(() => {
