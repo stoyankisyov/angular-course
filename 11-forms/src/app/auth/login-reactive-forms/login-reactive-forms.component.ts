@@ -14,5 +14,12 @@ export class LoginReactiveFormsComponent {
     password: new FormControl(''),
   });
 
-  onSubmit() {}
+  onSubmit() {
+    console.log(this.form);
+    const enteredEmail = this.form.value.email;
+    const enteredPassword = this.form.value.password;
+    console.log(
+      `Entered Email: ${enteredEmail}, Entered Password: ${enteredPassword}`
+    );
+  }
 }
