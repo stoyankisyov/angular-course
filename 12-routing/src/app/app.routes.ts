@@ -10,7 +10,7 @@ export const routes: Routes = [
     component: NoTaskComponent,
   },
   {
-    path: 'users/:iserId',
+    path: 'users/:userId',
     component: UserTasksComponent,
   },
 ];
