@@ -12,5 +12,6 @@ import { UsersService } from './users.service';
 })
 export class UsersComponent {
   private usersService = inject(UsersService);
+
   users = this.usersService.users;
 }

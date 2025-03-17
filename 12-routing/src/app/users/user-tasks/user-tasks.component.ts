@@ -1,7 +1,5 @@
-import { Component, computed, inject, input } from '@angular/core';
-import { UsersService } from '../users.service';
+import { Component, inject, input } from '@angular/core';
 import {
-  ActivatedRoute,
   ActivatedRouteSnapshot,
   CanMatchFn,
   RedirectCommand,
@@ -9,9 +7,10 @@ import {
   Router,
   RouterLink,
   RouterOutlet,
-  RouterState,
   RouterStateSnapshot,
 } from '@angular/router';
+
+import { UsersService } from '../users.service';
 
 @Component({
   selector: 'app-user-tasks',
@@ -53,5 +52,6 @@ export const dummyCanMatch: CanMatchFn = (route, segments) => {
   if (shouldGetAcess) {
     return true;
   }
+
   return new RedirectCommand(router.parseUrl('/unauthorized'));
 };

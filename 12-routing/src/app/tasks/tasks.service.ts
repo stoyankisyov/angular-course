@@ -1,6 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 
-import { type NewTaskData } from './task/task.model';
+import type { NewTaskData } from './task/task.model';
 
 @Injectable({ providedIn: 'root' })
 export class TasksService {

@@ -1,8 +1,8 @@
 import { Component, inject, input, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { CanDeactivateFn, Router, RouterLink } from '@angular/router';
 
 import { TasksService } from '../tasks.service';
-import { CanDeactivateFn, Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-new-task',
@@ -12,12 +12,15 @@ import { CanDeactivateFn, Router, RouterLink } from '@angular/router';
   styleUrl: './new-task.component.css',
 })
 export class NewTaskComponent {
+  private tasksService = inject(TasksService);
+  private router = inject(Router);
+
   userId = input.required<string>();
+
   enteredTitle = signal('');
   enteredSummary = signal('');
   enteredDate = signal('');
-  private tasksService = inject(TasksService);
-  private router = inject(Router);
+
   isSubmitted = false;
 
   onSubmit() {
@@ -29,6 +32,7 @@ export class NewTaskComponent {
       },
       this.userId()
     );
+
     this.isSubmitted = true;
 
     this.router.navigate(['/users', this.userId(), 'tasks']);
@@ -48,5 +52,6 @@ export const canLeaveEdintPage: CanDeactivateFn<NewTaskComponent> = (
   ) {
     return window.confirm('Do you really want to leave?');
   }
+
   return true;
 };

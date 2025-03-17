@@ -1,9 +1,8 @@
 import { Component, computed, inject, input } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 import { TaskComponent } from './task/task.component';
-import { Task } from './task/task.model';
 import { TasksService } from './tasks.service';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-tasks',
@@ -14,8 +13,10 @@ import { RouterLink } from '@angular/router';
 })
 export class TasksComponent {
   tasksService = inject(TasksService);
+
   order = input<'asc' | 'desc'>();
   userId = input.required<string>();
+
   userTasks = computed(() =>
     this.tasksService
       .allTasks()
