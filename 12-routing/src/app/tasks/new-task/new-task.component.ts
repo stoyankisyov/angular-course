@@ -18,6 +18,7 @@ export class NewTaskComponent {
   enteredDate = signal('');
   private tasksService = inject(TasksService);
   private router = inject(Router);
+  isSubmitted = false;
 
   onSubmit() {
     this.tasksService.addTask(
@@ -28,6 +29,7 @@ export class NewTaskComponent {
       },
       this.userId()
     );
+    this.isSubmitted = true;
 
     this.router.navigate(['/users', this.userId(), 'tasks']);
   }
@@ -36,6 +38,9 @@ export class NewTaskComponent {
 export const canLeaveEdintPage: CanDeactivateFn<NewTaskComponent> = (
   component
 ) => {
+  if (component.isSubmitted) {
+    return true;
+  }
   if (
     component.enteredTitle() ||
     component.enteredSummary() ||
