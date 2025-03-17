@@ -19,7 +19,7 @@ export const routes: Routes = [
     path: 'users/:userId',
     component: UserTasksComponent,
     children: userRoutes,
-    runGuardsAndResolvers: 'paramsOrQueryParamsChange',
+    runGuardsAndResolvers: 'always',
     canMatch: [dummyCanMatch],
     resolve: {
       userName: resolveUserName,
