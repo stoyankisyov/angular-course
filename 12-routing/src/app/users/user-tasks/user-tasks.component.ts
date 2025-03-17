@@ -18,8 +18,6 @@ import {
   styleUrl: './user-tasks.component.css',
 })
 export class UserTasksComponent {
-  private userService = inject(UsersService);
-
   userId = input.required<string>();
 
   userName = input.required<string>();
@@ -36,4 +34,11 @@ export const resolveUserName: ResolveFn<string> = (
     )?.name || '';
 
   return userName;
+};
+
+export const resolveTitle: ResolveFn<string> = (
+  activatedRoute: ActivatedRouteSnapshot,
+  routerState: RouterStateSnapshot
+) => {
+  return resolveUserName(activatedRoute, routerState) + "'s Tasks";
 };
