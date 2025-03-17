@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 
 import { NoTaskComponent } from './tasks/no-task/no-task.component';
 import {
+  dummyCanMatch,
   resolveTitle,
   resolveUserName,
   UserTasksComponent,
@@ -19,6 +20,7 @@ export const routes: Routes = [
     component: UserTasksComponent,
     children: userRoutes,
     runGuardsAndResolvers: 'paramsOrQueryParamsChange',
+    canMatch: [dummyCanMatch],
     resolve: {
       userName: resolveUserName,
     },

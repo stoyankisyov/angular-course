@@ -3,7 +3,10 @@ import { UsersService } from '../users.service';
 import {
   ActivatedRoute,
   ActivatedRouteSnapshot,
+  CanMatchFn,
+  RedirectCommand,
   ResolveFn,
+  Router,
   RouterLink,
   RouterOutlet,
   RouterState,
@@ -41,4 +44,14 @@ export const resolveTitle: ResolveFn<string> = (
   routerState: RouterStateSnapshot
 ) => {
   return resolveUserName(activatedRoute, routerState) + "'s Tasks";
+};
+
+export const dummyCanMatch: CanMatchFn = (route, segments) => {
+  const router = inject(Router);
+  const shouldGetAcess = Math.random() > 0.1;
+
+  if (shouldGetAcess) {
+    return true;
+  }
+  return new RedirectCommand(router.parseUrl('/unauthorized'));
 };
